@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "your-docker-image"
-        SONARQUBE_SERVER = "your-sonarqube-server"
-        SONARQUBE_TOKEN = credentials('sonarqube-token')
+        DOCKER_IMAGE = "my-demo-app"
+        SONARQUBE_SERVER = "http://sonarqube-soau2w14.ldapowner.opsera.io/"
+        SONARQUBE_TOKEN = credentials('sqp_b3521d171b02519caad93c4542bcacf39b4e30d4')
     }
 
     stages {
@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my_project_key"
+                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=test-proj-h"
                 }
             }
         }
